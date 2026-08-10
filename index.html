@@ -1,0 +1,1536 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Human Nervous System</title>
+
+  <style>
+    /* ==============================
+       RESET & VARIABLES
+    ============================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --secondary: #06b6d4;
+      --accent: #8b5cf6;
+
+      --dark: #0f172a;
+      --dark-blue: #172554;
+
+      --light: #f8fafc;
+      --white: #ffffff;
+
+      --text: #1e293b;
+      --muted: #64748b;
+
+      --border: #e2e8f0;
+
+      --success: #10b981;
+
+      --shadow:
+        0 10px 30px rgba(15, 23, 42, 0.10);
+
+      --radius: 18px;
+    }
+
+
+    /* ==============================
+       BODY
+    ============================== */
+
+    body {
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--light);
+      color: var(--text);
+
+      line-height: 1.6;
+    }
+
+
+    /* ==============================
+       NAVBAR
+    ============================== */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background:
+        rgba(15, 23, 42, 0.96);
+
+      backdrop-filter: blur(10px);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 18px 7%;
+
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      color: white;
+
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--accent)
+        );
+
+      font-size: 22px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+
+    /* ==============================
+       HERO
+    ============================== */
+
+    .hero {
+      min-height: 620px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 80px 7%;
+
+      color: white;
+
+      background:
+        radial-gradient(
+          circle at 80% 30%,
+          rgba(59, 130, 246, 0.35),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #0f172a,
+          #172554,
+          #1e3a8a
+        );
+
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 8px 14px;
+
+      margin-bottom: 20px;
+
+      border: 1px solid
+        rgba(255, 255, 255, 0.2);
+
+      border-radius: 50px;
+
+      background:
+        rgba(255, 255, 255, 0.08);
+
+      color: #bfdbfe;
+
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+
+      line-height: 1.05;
+
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #60a5fa;
+    }
+
+    .hero p {
+      max-width: 650px;
+
+      color: #cbd5e1;
+
+      font-size: 18px;
+
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+
+      padding: 13px 22px;
+
+      border-radius: 10px;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid #475569;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+
+    /* ==============================
+       GENERAL SECTION
+    ============================== */
+
+    section {
+      padding: 80px 7%;
+    }
+
+    .section-header {
+      max-width: 720px;
+
+      margin: 0 auto 50px;
+
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--primary);
+
+      font-size: 13px;
+      font-weight: bold;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 38px;
+
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+    }
+
+
+    /* ==============================
+       INTRO
+    ============================== */
+
+    .intro {
+      background: white;
+    }
+
+    .intro-grid {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 25px;
+    }
+
+    .intro-card {
+      padding: 30px;
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      background: white;
+
+      box-shadow: var(--shadow);
+
+      transition: 0.25s;
+    }
+
+    .intro-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .icon {
+      width: 55px;
+      height: 55px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+
+      background:
+        #eff6ff;
+
+      color: var(--primary);
+
+      font-size: 25px;
+
+      margin-bottom: 20px;
+    }
+
+    .intro-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .intro-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+
+    /* ==============================
+       MAIN DIVISIONS
+    ============================== */
+
+    .divisions {
+      background: #f1f5f9;
+    }
+
+    .division-grid {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 30px;
+    }
+
+    .division-card {
+      padding: 35px;
+
+      border-radius: var(--radius);
+
+      color: white;
+
+      min-height: 300px;
+
+      box-shadow: var(--shadow);
+    }
+
+    .division-card.cns {
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #1e40af
+        );
+    }
+
+    .division-card.pns {
+      background:
+        linear-gradient(
+          135deg,
+          #7c3aed,
+          #4c1d95
+        );
+    }
+
+    .division-number {
+      font-size: 14px;
+
+      opacity: 0.7;
+
+      margin-bottom: 15px;
+    }
+
+    .division-card h3 {
+      font-size: 28px;
+
+      margin-bottom: 15px;
+    }
+
+    .division-card p {
+      color: #dbeafe;
+
+      margin-bottom: 20px;
+    }
+
+    .division-card ul {
+      padding-left: 20px;
+    }
+
+    .division-card li {
+      margin-bottom: 8px;
+    }
+
+
+    /* ==============================
+       NERVOUS SYSTEM DIAGRAM
+    ============================== */
+
+    .diagram-section {
+      background: white;
+    }
+
+    .diagram {
+      max-width: 900px;
+
+      min-height: 420px;
+
+      margin: auto;
+
+      position: relative;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+    }
+
+    .brain {
+      width: 180px;
+      height: 140px;
+
+      border-radius:
+        50% 50% 45% 45%;
+
+      display: grid;
+      place-items: center;
+
+      position: relative;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f0abfc,
+          #c084fc
+        );
+
+      color: #581c87;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 15px 40px
+        rgba(139, 92, 246, 0.25);
+
+      z-index: 3;
+    }
+
+    .spinal-cord {
+      position: absolute;
+
+      top: 270px;
+
+      width: 28px;
+      height: 120px;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          #c084fc,
+          #6366f1
+        );
+
+      z-index: 2;
+    }
+
+    .nerve {
+      position: absolute;
+
+      width: 170px;
+      height: 5px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #60a5fa,
+          #a78bfa
+        );
+
+      border-radius: 10px;
+
+      z-index: 1;
+    }
+
+    .nerve.left {
+      transform:
+        translateX(-145px)
+        rotate(25deg);
+    }
+
+    .nerve.right {
+      transform:
+        translateX(145px)
+        rotate(-25deg);
+    }
+
+    .nerve.bottom-left {
+      transform:
+        translate(-100px, 100px)
+        rotate(145deg);
+    }
+
+    .nerve.bottom-right {
+      transform:
+        translate(100px, 100px)
+        rotate(-145deg);
+    }
+
+
+    /* ==============================
+       NEURON
+    ============================== */
+
+    .neuron-section {
+      background:
+        linear-gradient(
+          135deg,
+          #eff6ff,
+          #f5f3ff
+        );
+    }
+
+    .neuron-content {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 50px;
+
+      align-items: center;
+    }
+
+    .neuron-text h2 {
+      font-size: 40px;
+
+      margin-bottom: 20px;
+    }
+
+    .neuron-text p {
+      color: var(--muted);
+
+      margin-bottom: 25px;
+    }
+
+    .neuron-parts {
+      display: grid;
+
+      gap: 12px;
+    }
+
+    .neuron-part {
+      padding: 15px 18px;
+
+      background: white;
+
+      border-radius: 10px;
+
+      border:
+        1px solid var(--border);
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+    .neuron-part:hover {
+      border-color: var(--primary);
+
+      transform: translateX(5px);
+    }
+
+    .neuron-part strong {
+      color: var(--primary);
+    }
+
+
+    /* ==============================
+       FUNCTIONS
+    ============================== */
+
+    .functions {
+      background: white;
+    }
+
+    .function-grid {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .function-card {
+      padding: 28px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      background: white;
+
+      transition: 0.2s;
+    }
+
+    .function-card:hover {
+      border-color: var(--primary);
+
+      box-shadow: var(--shadow);
+
+      transform: translateY(-4px);
+    }
+
+    .function-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .function-card p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    /* ==============================
+       QUIZ
+    ============================== */
+
+    .quiz-section {
+      background: #0f172a;
+
+      color: white;
+    }
+
+    .quiz {
+      max-width: 700px;
+
+      margin: auto;
+
+      padding: 35px;
+
+      background: #1e293b;
+
+      border-radius: var(--radius);
+    }
+
+    .quiz h3 {
+      margin-bottom: 25px;
+    }
+
+    .quiz-option {
+      display: block;
+
+      width: 100%;
+
+      padding: 14px;
+
+      margin: 10px 0;
+
+      border:
+        1px solid #334155;
+
+      border-radius: 10px;
+
+      background: #0f172a;
+
+      color: white;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+    .quiz-option:hover {
+      border-color: #60a5fa;
+    }
+
+    #quiz-result {
+      margin-top: 20px;
+
+      font-weight: bold;
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    footer {
+      padding: 35px 7%;
+
+      background: #020617;
+
+      color: #94a3b8;
+
+      text-align: center;
+
+      font-size: 14px;
+    }
+
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .intro-grid,
+      .function-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .neuron-content {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      section {
+        padding: 60px 5%;
+      }
+
+      .hero {
+        padding: 70px 5%;
+      }
+
+      .intro-grid,
+      .division-grid,
+      .function-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .section-header h2 {
+        font-size: 30px;
+      }
+
+      .diagram {
+        transform: scale(0.75);
+      }
+
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ==============================
+       NAVIGATION
+  =============================== -->
+
+  <nav>
+
+    <div class="logo">
+
+      <div class="logo-icon">
+        🧠
+      </div>
+
+      <span>
+        NeuroLearn
+      </span>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+      <li>
+        <a href="#overview">
+          Overview
+        </a>
+      </li>
+
+      <li>
+        <a href="#divisions">
+          Divisions
+        </a>
+      </li>
+
+      <li>
+        <a href="#neuron">
+          Neuron
+        </a>
+      </li>
+
+      <li>
+        <a href="#quiz">
+          Quiz
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+  <!-- ==============================
+       HERO
+  =============================== -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <span class="badge">
+        HUMAN BIOLOGY • NERVOUS SYSTEM
+      </span>
+
+      <h1>
+        The Human
+        <span>Nervous System</span>
+      </h1>
+
+      <p>
+        Explore the remarkable communication network
+        that controls movement, senses, thoughts,
+        emotions, and vital functions throughout
+        the human body.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a
+          href="#overview"
+          class="btn btn-primary"
+        >
+          Start Learning
+        </a>
+
+        <a
+          href="#quiz"
+          class="btn btn-outline"
+        >
+          Test Your Knowledge
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ==============================
+       OVERVIEW
+  =============================== -->
+
+  <section
+    class="intro"
+    id="overview"
+  >
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Overview
+      </div>
+
+      <h2>
+        What is the Nervous System?
+      </h2>
+
+      <p>
+        The nervous system is the body's
+        communication and control network.
+        It receives information, processes it,
+        and coordinates responses.
+      </p>
+
+    </div>
+
+
+    <div class="intro-grid">
+
+      <article class="intro-card">
+
+        <div class="icon">
+          ⚡
+        </div>
+
+        <h3>
+          Communication
+        </h3>
+
+        <p>
+          Neurons transmit electrical and
+          chemical signals that allow different
+          parts of the body to communicate.
+        </p>
+
+      </article>
+
+
+      <article class="intro-card">
+
+        <div class="icon">
+          🧠
+        </div>
+
+        <h3>
+          Processing
+        </h3>
+
+        <p>
+          The brain and spinal cord process
+          information received from the senses
+          and determine appropriate responses.
+        </p>
+
+      </article>
+
+
+      <article class="intro-card">
+
+        <div class="icon">
+          ❤️
+        </div>
+
+        <h3>
+          Coordination
+        </h3>
+
+        <p>
+          The nervous system coordinates
+          movement, heartbeat, breathing,
+          digestion, and many other functions.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       DIVISIONS
+  =============================== -->
+
+  <section
+    class="divisions"
+    id="divisions"
+  >
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Organization
+      </div>
+
+      <h2>
+        Two Major Divisions
+      </h2>
+
+      <p>
+        The nervous system is broadly divided
+        into the central and peripheral nervous
+        systems.
+      </p>
+
+    </div>
+
+
+    <div class="division-grid">
+
+      <article class="division-card cns">
+
+        <div class="division-number">
+          01 / CENTRAL
+        </div>
+
+        <h3>
+          Central Nervous System
+        </h3>
+
+        <p>
+          The CNS is the main processing center
+          of the nervous system.
+        </p>
+
+        <ul>
+
+          <li>
+            Brain
+          </li>
+
+          <li>
+            Spinal cord
+          </li>
+
+          <li>
+            Processes sensory information
+          </li>
+
+          <li>
+            Controls many body responses
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <article class="division-card pns">
+
+        <div class="division-number">
+          02 / PERIPHERAL
+        </div>
+
+        <h3>
+          Peripheral Nervous System
+        </h3>
+
+        <p>
+          The PNS connects the central nervous
+          system with the rest of the body.
+        </p>
+
+        <ul>
+
+          <li>
+            Cranial nerves
+          </li>
+
+          <li>
+            Spinal nerves
+          </li>
+
+          <li>
+            Sensory pathways
+          </li>
+
+          <li>
+            Motor pathways
+          </li>
+
+        </ul>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       DIAGRAM
+  =============================== -->
+
+  <section class="diagram-section">
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Anatomy
+      </div>
+
+      <h2>
+        Nervous System Structure
+      </h2>
+
+      <p>
+        The brain and spinal cord form the
+        central nervous system, while nerves
+        extend throughout the body.
+      </p>
+
+    </div>
+
+
+    <div class="diagram">
+
+      <div class="brain">
+        BRAIN
+      </div>
+
+      <div class="spinal-cord"></div>
+
+      <div class="nerve left"></div>
+
+      <div class="nerve right"></div>
+
+      <div class="nerve bottom-left"></div>
+
+      <div class="nerve bottom-right"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       NEURON
+  =============================== -->
+
+  <section
+    class="neuron-section"
+    id="neuron"
+  >
+
+    <div class="neuron-content">
+
+      <div class="neuron-text">
+
+        <div class="section-label">
+          Cellular Level
+        </div>
+
+        <h2>
+          Meet the Neuron
+        </h2>
+
+        <p>
+          Neurons are specialized cells that
+          receive, process, and transmit
+          information using electrical and
+          chemical signals.
+        </p>
+
+        <p>
+          A typical neuron contains several
+          specialized structures that work
+          together to transmit signals.
+        </p>
+
+      </div>
+
+
+      <div class="neuron-parts">
+
+        <div class="neuron-part">
+
+          <strong>
+            Dendrites
+          </strong>
+
+          <br>
+
+          Receive signals from other cells.
+
+        </div>
+
+
+        <div class="neuron-part">
+
+          <strong>
+            Cell Body
+          </strong>
+
+          <br>
+
+          Contains the nucleus and maintains
+          the neuron's functions.
+
+        </div>
+
+
+        <div class="neuron-part">
+
+          <strong>
+            Axon
+          </strong>
+
+          <br>
+
+          Carries electrical signals away
+          from the cell body.
+
+        </div>
+
+
+        <div class="neuron-part">
+
+          <strong>
+            Axon Terminals
+          </strong>
+
+          <br>
+
+          Communicate with other cells
+          through chemical signals.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       FUNCTIONS
+  =============================== -->
+
+  <section class="functions">
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Functions
+      </div>
+
+      <h2>
+        What Does It Control?
+      </h2>
+
+      <p>
+        The nervous system participates in
+        almost every activity of the human body.
+      </p>
+
+    </div>
+
+
+    <div class="function-grid">
+
+      <article class="function-card">
+
+        <h3>
+          👁 Sensation
+        </h3>
+
+        <p>
+          Detects information such as light,
+          sound, touch, temperature, and pain.
+        </p>
+
+      </article>
+
+
+      <article class="function-card">
+
+        <h3>
+          🏃 Movement
+        </h3>
+
+        <p>
+          Controls voluntary muscle movement
+          and helps coordinate body position.
+        </p>
+
+      </article>
+
+
+      <article class="function-card">
+
+        <h3>
+          ❤️ Autonomic Control
+        </h3>
+
+        <p>
+          Helps regulate involuntary functions
+          such as heart rate and digestion.
+        </p>
+
+      </article>
+
+
+      <article class="function-card">
+
+        <h3>
+          🧠 Thinking
+        </h3>
+
+        <p>
+          Supports learning, memory, reasoning,
+          decision-making, and consciousness.
+        </p>
+
+      </article>
+
+
+      <article class="function-card">
+
+        <h3>
+          😊 Emotions
+        </h3>
+
+        <p>
+          Brain networks participate in emotional
+          processing and behavioral responses.
+        </p>
+
+      </article>
+
+
+      <article class="function-card">
+
+        <h3>
+          ⚡ Reflexes
+        </h3>
+
+        <p>
+          Some rapid protective responses can
+          occur through reflex pathways.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       QUIZ
+  =============================== -->
+
+  <section
+    class="quiz-section"
+    id="quiz"
+  >
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Knowledge Check
+      </div>
+
+      <h2>
+        Test Your Knowledge
+      </h2>
+
+      <p>
+        Answer the question below.
+      </p>
+
+    </div>
+
+
+    <div class="quiz">
+
+      <h3>
+        Which structures make up the
+        Central Nervous System?
+      </h3>
+
+
+      <button
+        class="quiz-option"
+        onclick="checkAnswer(false)"
+      >
+        A. Heart and lungs
+      </button>
+
+
+      <button
+        class="quiz-option"
+        onclick="checkAnswer(true)"
+      >
+        B. Brain and spinal cord
+      </button>
+
+
+      <button
+        class="quiz-option"
+        onclick="checkAnswer(false)"
+      >
+        C. Muscles and bones
+      </button>
+
+
+      <button
+        class="quiz-option"
+        onclick="checkAnswer(false)"
+      >
+        D. Skin and sensory receptors
+      </button>
+
+
+      <div id="quiz-result"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       FOOTER
+  =============================== -->
+
+  <footer>
+
+    <p>
+      © 2026 NeuroLearn
+      • Educational Nervous System Resource
+    </p>
+
+  </footer>
+
+
+  <!-- ==============================
+       JAVASCRIPT
+  =============================== -->
+
+  <script>
+
+    function checkAnswer(correct) {
+
+      const result =
+        document.getElementById(
+          "quiz-result"
+        );
+
+      if (correct) {
+
+        result.textContent =
+          "✓ Correct! The CNS consists of the brain and spinal cord.";
+
+        result.style.color =
+          "#4ade80";
+
+      } else {
+
+        result.textContent =
+          "✗ Not quite. Try again!";
+
+        result.style.color =
+          "#f87171";
+
+      }
+
+    }
+
+
+    /* Smooth scrolling */
+
+    document
+      .querySelectorAll(
+        'a[href^="#"]'
+      )
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          function(event) {
+
+            const target =
+              document.querySelector(
+                this.getAttribute("href")
+              );
+
+            if (target) {
+
+              event.preventDefault();
+
+              target.scrollIntoView({
+                behavior: "smooth"
+              });
+
+            }
+
+          }
+        );
+
+      });
+
+  </script>
+
+</body>
+</html>
+```
